@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +36,15 @@
                                 <h1 class="mb-5 text-center">
                                     Login
                                 </h1>
-                                <form action="login.php" method="POST">
+
+                                <?php 
+                                    if(isset($_SESSION['message'])){
+                                        echo "<div class='alert alert-success'>".$_SESSION['message']."</div>";
+                                        unset($_SESSION['message']);
+                                    }
+
+                                ?>
+                                <form action="./backend/useraction.php" method="POST">
                                     <div class="form-outline mb-4">
                                         <input type="text" id="form3Example1c" class="form-control form-control-lg" name="username" placeholder="email@example.com"/>
                                     </div>
@@ -47,7 +56,7 @@
                                             <a href="passwordreset.html">Forgot password?</a>
                                         </div>
                                     </div>
-                                <a href="dashboard.html" class="login btn btn-primary w-50 mr-1 ">Login</a>
+                                <button type="submit" class="login btn btn-primary w-50 mr-1 " name="login">Login</button>
                                 
                                     <p class="mt-2">Not a member? <a href="register.html">Register</a></p>
                                 </form>

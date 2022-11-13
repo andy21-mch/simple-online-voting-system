@@ -46,44 +46,18 @@
                                     <tbody>
                                         <tr>
                                             <td>John Doe</td>
-                                            <td><button class="btn btn-primary">Vote</button></td>
+                                            <td>
+                                            <form action="./backend/useraction.php" method="POST">
+                                                <input type="hidden" value="1" name="idnumber">
+                                                <button type="submit" name="vote" class="btn btn-primary">Vote</button>
+                                            </form>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>John Doe</td>
                                             <td><button class="btn btn-primary">Vote</button></td>
                                         </tr>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td><button class="btn btn-primary">Vote</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td><button class="btn btn-primary">Vote</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td><button class="btn btn-primary">Vote</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td><button class="btn btn-primary">Vote</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td><button class="btn btn-primary">Vote</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td><button class="btn btn-primary">Vote</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td><button class="btn btn-primary">Vote</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td><button class="btn btn-primary">Vote</button></td>
-                                        </tr>
+                                        
                                     </tbody>
                                 </table>
                                 <a href="index.html" class="btn btn-primary">Logout</a>
