@@ -4,6 +4,7 @@ include_once './logic.php';
 session_start();
 
 $validation = [];
+
 if(isset($_POST['register'])){
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
@@ -49,6 +50,10 @@ if(isset($_POST['register'])){
         $validation['idnum'] = "ID number must be 10 digits";
     }
 
+    if(verifyEmail($email)){
+        $validation['email'] = "Email already exists";
+    }
+
     if(count($validation) == 0){
         // register the user
         if(register($id, $firstname, $lastname, $email, $password, $age)){
@@ -65,18 +70,43 @@ if(isset($_POST['register'])){
         header("Location: ../register.php");
     }
 
-
-
-    
-
-
 }
 
 elseif(isset($_POST['login'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    login($email, $password);
+    if(empty($email)){
+        $validation['email'] = "Email is required";
+    }
+    if(empty($password)){
+        $validation['password'] = "Password is required";
+    }
+
+    if(strlen($password) < 8){
+        $validation['password'] = "Password must be at least 8 characters";
+    }
+
+    if(strlen($password) >= 12){
+        $validation['password'] = "Password must be less than or equal to 12 characters";
+    }
+
+    if(count($validation) == 0){
+        // login the user
+        if(login($email, $password)){
+            header("Location: ../dashboard.php");
+        }
+        else{
+            $validation['login'] = "Login failed";
+            $_SESSION['validation'] = $validation;
+            header("Location: ../login.php");
+        }
+    }
+    else{
+        $_SESSION['validation'] = $validation;
+        header("Location: ../login.php");
+    }
+    
 }
 
 elseif(isset($_POST['logout'])){
@@ -84,10 +114,15 @@ elseif(isset($_POST['logout'])){
 }
 
 elseif(isset($_POST['vote'])){
-    $idnumber = $_POST['idnumber'];
-    $vote = $_POST['vote'];
-
-    vote($idnumber, $vote);
+    $voteeId = $_POST['idnumber'];
+    $voterId = $_POST['voterId'];
+    if(vote($voteeId, $voterId)){
+        $_SESSION['message'] = "Vote successful";
+        header("Location: ../dashboard.php");
+    }else{
+        $_SESSION['message'] = "Sorry you have already voted";
+        header("Location: ../dashboard.php");
+    }
 }
 
 

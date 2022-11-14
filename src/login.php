@@ -46,10 +46,22 @@
                                 ?>
                                 <form action="./backend/useraction.php" method="POST">
                                     <div class="form-outline mb-4">
-                                        <input type="text" id="form3Example1c" class="form-control form-control-lg" name="username" placeholder="email@example.com"/>
+                                        <input type="email" id="form3Example1c" class="form-control form-control-lg" name="email" placeholder="email@example.com"/>
+                                        <?php if(isset($_SESSION['validation']['email'])): ?>
+                                            <span class="text-danger"><?php 
+                                            echo $_SESSION['validation']['email']; 
+                                            unset($_SESSION['validation']['email']);
+                                            ?></span>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="form-outline mb-4">
                                         <input type="password" id="form3Example3c" class="form-control form-control-lg" name="password" placeholder="*******" />
+                                        <?php if(isset($_SESSION['validation']['password'])): ?>
+                                            <span class="text-danger"><?php 
+                                            echo $_SESSION['validation']['password']; 
+                                            unset($_SESSION['validation']['password']);
+                                            ?></span>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="row mb-4">
                                         <div class="col">
