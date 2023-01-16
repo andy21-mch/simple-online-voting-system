@@ -18,8 +18,8 @@
           </button>
           <div class="collapse navbar-collapse offset-8" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link" href="login.html">Login</a>
-              <!-- <a class="nav-link" href="src/register.html">Register</a> -->
+              <a class="nav-link" href="login.php">Login</a>
+              <!-- <a class="nav-link" href="src/register.php">Register</a> -->
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@
                                     </div>
 
                                     <div class="text-center">
-                                        <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a href="../src/login.html" class="link-danger">Login</a></p>
+                                        <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a href="../src/login.php" class="link-danger">Login</a></p>
                                     </div>
         
                             </div>

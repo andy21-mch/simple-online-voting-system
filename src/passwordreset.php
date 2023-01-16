@@ -18,7 +18,7 @@
           </button>
           <div class="collapse navbar-collapse offset-8" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link" href="register.html">Register</a>
+              <a class="nav-link" href="register.php">Register</a>
             </div>
           </div>
         </div>
@@ -44,9 +44,9 @@
                                         <label for="newpass" class="label float-start">New Password</label>
                                         <input type="password" id="newpass" class="form-control form-control-lg" name="password" placeholder="New Password *******" />
                                     </div>
-                                <a href="src/login.html" class="login btn btn-primary w-25 mr-1 ">Reset</a>
+                                <a href="src/login.php" class="login btn btn-primary w-25 mr-1 ">Reset</a>
                                 
-                                    <p class="mt-2">Not a member? <a href="register.html">Register</a></p>
+                                    <p class="mt-2">Not a member? <a href="register.php">Register</a></p>
                                 </form>
                             </div>
                         </div>

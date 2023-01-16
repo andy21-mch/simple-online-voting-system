@@ -19,7 +19,7 @@
           </button>
           <div class="collapse navbar-collapse offset-8" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link" href="register.html">Register</a>
+              <a class="nav-link" href="register.php">Register</a>
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@
                                     </div>
                                 <button type="submit" class="login btn btn-primary w-50 mr-1 " name="login">Login</button>
                                 
-                                    <p class="mt-2">Not a member? <a href="register.html">Register</a></p>
+                                    <p class="mt-2">Not a member? <a href="register.php">Register</a></p>
                                 </form>
                             </div>
                         </div>
