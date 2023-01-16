@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_ALL);
+
 function register($id, $firstname, $lastname, $email, $password, $age){
     $conn = connect();
     $sql = "INSERT INTO tbl_users ( id, first_name, last_name, email, password, age, role) VALUES ('$id','$firstname', '$lastname', '$email', '$password', '$age', 'user')";
@@ -140,5 +142,18 @@ function connect(){
         else{
             return false;
         }
+    }
+
+    function getWinner(){
+        $conn = connect();
+        $sql = "SELECT * FROM tbl_constestants WHERE vote_count=(SELECT MAX(vote_count) FROM tbl_constestants)";
+        $result = mysqli_query($conn, $sql);
+        if(mysqli_num_rows($result) > 0){
+            return mysqli_fetch_assoc($result);
+        }
+        else{
+            return null;
+        }
+
     }
     

@@ -94,7 +94,11 @@ elseif(isset($_POST['login'])){
     if(count($validation) == 0){
         // login the user
         if(login($email, $password)){
-            header("Location: ../dashboard.php");
+            if($_SESSION['role'] == 'admin'){
+                header("Location: ../admin/dashboard.php");
+            }else{
+                header("Location: ../dashboard.php");
+            }
         }
         else{
             $validation['login'] = "Login failed";

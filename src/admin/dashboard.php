@@ -1,3 +1,9 @@
+<?php session_start(); 
+include_once '../backend/logic.php';
+
+$contestants = getContestants();
+$winner = getWinner();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,37 +48,35 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
+                                            <th scope="col">Photo</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Vote</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td><button class="btn btn-primary">12</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td><button class="btn btn-primary">02</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td><button class="btn btn-primary">15</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td><button class="btn btn-primary">100</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td><button class="btn btn-primary">19</button></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><h2>Winner</h2> </td>
-                                            <td><button class="btn btn-success">John Doe</button></td>
-                                        </tr>
-                                    </tbody>
+                            <?php foreach($contestants as $contestant){ ?>
+                            <tr>
+                                <td>
+                                    <?php $image = $contestant['image_url'] ?>
+                                    <img src="../assets/images/<?php echo '$image'?>" class="image rounded-circle" alt="image" style="height: 100px; width: 100px; border-radius: 50%" />
+                                </td>
+                                <td><?php echo $contestant['first_name'] . ' ' . $contestant['last_name']; ?></td>
+                                <td>
+                                <form action="./backend/useraction.php" method="POST">
+                                    <input type="hidden" value="<?php echo $contestant['idcard_number'] ?>" name="idnumber">
+                                    <input type="hidden" value="<?php echo $_SESSION['id'] ?>" name="voterId">
+                                    <button type="button" name="vote" class="btn btn-primary"><?php echo $contestant['vote_count'] ?></button>
+                                </form>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                            <tr class="" style="background-color: gray;">
+                                <td>WINNER</td>
+                                <td><?php echo $winner['first_name'] ?></td>
+                                <td><?php echo $winner['vote_count']  ?></td>
+                            </tr>
+                            
+                        </tbody>
                                 </table>
 
                                 <div class="row">
